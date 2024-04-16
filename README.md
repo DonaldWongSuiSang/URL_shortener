@@ -12,7 +12,7 @@ URL Shortener is a simple web application built using Node.js, Express, and Hand
 ## Installation
 1. **Clone the repository:**
    ```
-   git clone ???
+   git clone https://github.com/DonaldWongSuiSang/URL_shortener.git
    ```
 2. **Navigate to the project directory:**
    ```
