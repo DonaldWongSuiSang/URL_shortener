@@ -1,8 +1,1 @@
-{
-  "results":[
-    {
-    "Original": "www.google.com",
-    "shorten": "ab7dc"
-    }
-  ]
-}
+{"results":[{"originalUrl":"www.google.com","shortUrl":"abc123"},{"originalUrl":"www.youtube.com","shortUrl":"abc126"},{"originalUrl":"www.apple.com","shortUrl":"PzpNZ"},{"originalUrl":"www.facebook.com","shortUrl":"i8pwp"},{"shortUrl":"FCgSz"},{"originalUrl":"www.ig.com","shortUrl":"5QMRt"}]}

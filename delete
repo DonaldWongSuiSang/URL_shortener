@@ -7,8 +7,9 @@
 </div>
 
 {{#if showInput}}
-<form action="/shorten" class="text-center m-5" method="post">
-<input type="text" name="originalUrl" id="original_Url" class="form-control form-control-lg" placeholder="Input URL here" style="background-color: #E5E8E8;" aria-label="URL" aria-describedby="original_URL">
+<form action="/shorten" class="text-center m-5" method="post" onsubmit="return validateForm()">
+  <input type="text" name="originalUrl" id="original_Url" class="form-control form-control-lg"  placeholder="Input URL here"  style="background-color: #E5E8E8;" aria-label="URL" aria-describedby="original_URL">
+  <p id="warning" style="color:red; display:none;">Please enter a URL.</p>
   <button type="submit" class="btn btn-outline-primary" style="width:500px; height:50px;">Shorten</button>
 </form>
 
@@ -36,4 +37,15 @@
       document.body.removeChild(el);
       alert('Copied to clipboard!');
     }
+  function validateForm(){
+    var originalUrl = document.getElementById('original_Url').value.trim();
+    var warning = document.getElementById('warning');
+    if (originalUrl ===''){
+      warning.style.display = 'block'
+      return false
+    } else{
+      warning.style.display = 'none'
+      return true
+    }
+  }
 </script>
