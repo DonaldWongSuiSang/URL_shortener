@@ -1,51 +1,54 @@
 <div class="container mt-12">
   <h1 class="text-center" style="margin:100px 0px 30px 0px;">URL Shortener</h1>
+  <!-- Container for the URL Shortener title -->
   <div class="d-flex justify-content-center" style="height: 150px; margin-bottom: 100px;">
-      <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="連結圖案"
-        class="img-fluid">
+    <img src="https://assets-lighthouse.alphacamp.co/uploads/image/file/16716/ExportedContentImage_00.png" alt="連結圖案" class="img-fluid">
   </div>
 </div>
 
 {{#if showInput}}
-<form action="/shorten" class="text-center m-5" method="post" onsubmit="return validateForm()">
-<input type="text" name="originalUrl" id="original_Url" class="form-control form-control-lg" placeholder="Input URL here" style="background-color: #E5E8E8;" aria-label="URL" aria-describedby="original_URL">
-<p id="warning" style="color:red; display:none">Please enter a URL.</p>
-  <button type="submit" class="btn btn-outline-primary mt-3" style="width:500px; height:50px;">Shorten</button>
-</form>
-
+<!-- Form for inputting URL -->
+  <form action="/shorten" class="text-center m-5" method="post" onsubmit="return validateForm()">
+    <input type="text" name="originalUrl" id="original_Url" class="form-control form-control-lg" placeholder="Input URL here" style="background-color: #E5E8E8;" aria-label="URL" aria-describedby="original_URL">
+    <p id="warning" style="color:red;  display:none">Please enter a URL.</p>
+    <button type="submit" class="btn btn-outline-primary mt-3" style="width:500px; height:50px;">Shorten</button>
+  </form>
 {{else}}
-<div class="container">
-  <div class="row justify-content-center m-3">
-    <div class="col-5 text-left">
-      <h3>Success! Please use this link:</h3>
-       <h2><a href="http://localhost:{{port}}/{{shortUrl}}">http://localhost:{{port}}/{{shortUrl}}</a></h2>
+<!-- Success message with shortened URL -->
+  <div class="container">
+    <div class="row justify-content-center m-3">
+      <div class="col-5 text-left">
+        <h3>Success! Please use this link:</h3>
+        <h2><a href="http://localhost:{{port}}/{{shortUrl}}">http://localhost:{{port}}/{{shortUrl}}</a></h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <button class="btn btn-outline-primary" style="width:200px; height:50px;"   onclick="copyToClipboard('http://localhost:{{port}}/{{shortUrl}}')">Copy</button>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <button class="btn btn-outline-primary" style="width:200px; height:50px;"   onclick="copyToClipboard('http://localhost:{{port}}/{{shortUrl}}')">Copy</button>
-  </div>
-</div>
 {{/if}}
   
 <script>
-    function copyToClipboard(text) {
-      const el = document.createElement('textarea');
-      el.value = text;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      alert('Copied to clipboard!');
+  // Function to copy text to clipboard
+  function copyToClipboard(text) {
+    const el = document.createElement('textarea');
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    alert('Copied to clipboard!');
+  }
+  // Function to validate the form
+  function validateForm() {
+    var originalUrl = document.getElementById('original_Url').value.trim();        
+    var warning = document.getElementById('warning');
+    if (originalUrl === '') {
+      warning.style.display = 'block'
+      return false
+    } else {
+      warning.style.display = 'none'
+      return true
     }
-    function validateForm() {
-          var originalUrl = document.getElementById('original_Url').value.trim();
-          var warning = document.getElementById('warning');
-          if (originalUrl === '') {
-            warning.style.display = 'block'
-            return false
-          } else {
-            warning.style.display = 'none'
-            return true
-          }
-        }
+  }
 </script>
