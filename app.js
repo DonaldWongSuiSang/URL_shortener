@@ -49,9 +49,11 @@ app.get('/:shortUrl',(req,res) =>{
 
 // Function to generate a short URL
 function generateShortUrl(originalUrl) {
+ 
    const existingUrl = existingData.results.find(item => item.originalUrl === originalUrl)
   if(existingUrl){
     return existingUrl.shortUrl
+    //return the same group of shortUrl if the original is inputted before
   }else{
     const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
     let shortUrl = ''
