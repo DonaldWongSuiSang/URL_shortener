@@ -13,7 +13,8 @@
     <p id="warning" style="color:red;  display:none">Please enter a URL.</p>
     <button type="submit" class="btn btn-outline-primary mt-3" style="width:500px; height:50px;">Shorten</button>
   </form>
-{{else}}
+
+{{ else }}
 <!-- Success message with shortened URL -->
   <div class="container">
     <div class="row justify-content-center m-3">
@@ -31,13 +32,8 @@
 <script>
   // Function to copy text to clipboard
   function copyToClipboard(text) {
-    const el = document.createElement('textarea');
-    el.value = text;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    alert('Copied to clipboard!');
+    navigator.clipboard.writeText(text)
+        alert('Copied to clipboard!')
   }
   // Function to validate the form
   function validateForm() {
